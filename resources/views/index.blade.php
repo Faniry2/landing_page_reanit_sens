@@ -8,30 +8,7 @@
 @section('content')
     <!-- ═══ NAV ═══ -->
     {{-- ═══ NAV — coller dans index.blade.php ═══ --}}
-        <nav aria-label="Navigation principale">
-            <a class="logo" href="#" aria-label="Renaît-Sens — Retour à l'accueil">Renaît-Sens90</a>
-
-            {{-- Desktop --}}
-            <ul class="nav-links" role="list">
-                <li><a href="#resonance">Pour qui</a></li>
-                <li><a href="#offer">Ce que tu reçois</a></li>
-                <li><a href="#steps">Le chemin</a></li>
-                <li><a href="#founders">Fondateurs</a></li>
-            </ul>
-            <a href="#form" class="nav-btn">Je commence ›</a>
-
-            {{-- Burger (visible mobile uniquement) --}}
-            <button
-                id="burger"
-                class="burger"
-                aria-label="Ouvrir le menu"
-                aria-expanded="false"
-                aria-controls="mobileMenu">
-                <span class="burger-line"></span>
-                <span class="burger-line"></span>
-                <span class="burger-line"></span>
-            </button>
-        </nav>
+        <x-nav/>
 
         {{-- ═══ MOBILE MENU OVERLAY ═══ --}}
         <div id="mobileMenu" class="mobile-menu" role="dialog" aria-label="Menu principal" aria-modal="true">

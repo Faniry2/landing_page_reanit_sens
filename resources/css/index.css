@@ -711,3 +711,61 @@ footer { background:var(--black); border-top:1px solid rgba(201,168,76,.12); pad
   .accroche-card { width: 240px; height: 320px; }
   .accroche-right { height: 320px; }
 }
+
+
+/* ── Logo nav avec image ─────────────────────────────────── */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  text-decoration: none;
+  position: relative;
+  z-index: 1001;
+}
+
+.logo-img {
+  width: 179px;
+  height: 200px;
+  object-fit: contain;
+  /* Donne un halo doré autour du phénix sur fond sombre */
+  filter: drop-shadow(0 0 8px rgba(201,168,76,.35));
+  transition: filter .3s, transform .3s;
+  flex-shrink: 0;
+}
+
+.logo:hover .logo-img {
+  filter: drop-shadow(0 0 14px rgba(201,168,76,.65));
+  transform: scale(1.05) rotate(-2deg);
+}
+
+.logo-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--gold);
+  letter-spacing: .08em;
+  line-height: 1;
+}
+
+.logo-num {
+  /* Le "90" en outline doré, dans le style du hero */
+  font-size: 1rem;
+  -webkit-text-stroke: 1.5px var(--gold);
+  color: transparent;
+  letter-spacing: -.02em;
+  margin-left: .1em;
+}
+
+/* Logo dans le menu mobile */
+.mobile-logo {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* Responsive — réduit le logo sur très petit écran */
+@media (max-width: 380px) {
+  .logo-img  { width: 90px; height: 90px; }
+  .logo-text { font-size: 1.1rem; }
+}
