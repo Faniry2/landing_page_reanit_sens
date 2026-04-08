@@ -1,85 +1,43 @@
-/**
- * RENAÎT-SENS — index.js (version finale)
- */
 
-/* ═══════════════════════════════════════════════════════════
-   1. BURGER MENU
-   ═══════════════════════════════════════════════════════════ */
-const burger     = document.getElementById('burger');
+// ═══ BURGER MENU ═══
+const burger = document.getElementById('burger');
 const mobileMenu = document.getElementById('mobileMenu');
-const body       = document.body;
 
 if (burger && mobileMenu) {
-
   function openMenu() {
     burger.classList.add('is-open');
     mobileMenu.classList.add('is-open');
-    burger.setAttribute('aria-expanded', 'true');
-    body.style.overflow = 'hidden'; // bloque le scroll derrière
+    burger.setAttribute('aria-expanded','true');
+    document.body.style.overflow = 'hidden';
   }
-
   function closeMenu() {
     burger.classList.remove('is-open');
     mobileMenu.classList.remove('is-open');
-    burger.setAttribute('aria-expanded', 'false');
-    body.style.overflow = '';
+    burger.setAttribute('aria-expanded','false');
+    document.body.style.overflow = '';
   }
-
-  // Toggle au click burger
-  burger.addEventListener('click', () => {
-    burger.classList.contains('is-open') ? closeMenu() : openMenu();
-  });
-
-  // Ferme au click sur un lien du menu mobile
-  mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', closeMenu);
-  });
-
-  // Ferme avec la touche Échap
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeMenu();
-  });
-
-  // Ferme si on clique en dehors du menu (sur le fond)
-  mobileMenu.addEventListener('click', (e) => {
-    if (e.target === mobileMenu) closeMenu();
-  });
+  burger.addEventListener('click', () => burger.classList.contains('is-open') ? closeMenu() : openMenu());
+  mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+  mobileMenu.addEventListener('click', e => { if (e.target === mobileMenu) closeMenu(); });
 }
 
+// ═══ NAV scroll
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.style.background = window.scrollY > 50 ? 'rgba(12,12,12,0.98)' : 'rgba(12,12,12,0.92)';
+}, { passive: true });
 
-/* ═══════════════════════════════════════════════════════════
-   2. NAV — opacité au scroll
-   ═══════════════════════════════════════════════════════════ */
-const nav = document.querySelector('nav');
-if (nav) {
-  window.addEventListener('scroll', () => {
-    nav.style.background = window.scrollY > 50
-      ? 'rgba(12,12,12,0.98)'
-      : 'rgba(12,12,12,0.92)';
-  }, { passive: true });
-}
-
-
-/* ═══════════════════════════════════════════════════════════
-   3. SCROLL REVEAL — sections générales (.reveal)
-   ═══════════════════════════════════════════════════════════ */
+// Reveal on scroll
 const revealObs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      revealObs.unobserve(e.target);
-    }
+    if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
   });
 }, { threshold: 0.1 });
-
 document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-
-/* ═══════════════════════════════════════════════════════════
-   4. SECTION ACCROCHE — FONDU DEPUIS LE HAUT
-   ═══════════════════════════════════════════════════════════ */
+// Accroche stagger
 const accroche = document.getElementById('accroche');
-
 if (accroche) {
   const els = [
     accroche.querySelector('.accroche-badge'),
@@ -90,38 +48,38 @@ if (accroche) {
     accroche.querySelector('.accroche-stats'),
     accroche.querySelector('.accroche-right'),
   ].filter(Boolean);
-
-  const accrObs = new IntersectionObserver((entries) => {
+  els.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(-28px)'; el.style.transition = 'opacity .85s ease, transform .85s ease'; });
+  const obs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        els.forEach((el, i) => {
-          setTimeout(() => el.classList.add('in-view'), i * 130);
-        });
-        accrObs.unobserve(entry.target);
+        els.forEach((el, i) => setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }, i * 120));
+        obs.unobserve(entry.target);
       }
     });
   }, { threshold: 0.08 });
-
-  accrObs.observe(accroche);
+  obs.observe(accroche);
 }
 
-
-/* ═══════════════════════════════════════════════════════════
-   5. CANVAS FLAMME
-   ═══════════════════════════════════════════════════════════ */
+// ═══ FLAMME CANVAS ═══
 (function initFlame() {
   const canvas = document.getElementById('flameCanvas');
   if (!canvas) return;
-
   const ctx = canvas.getContext('2d');
   const W = canvas.width, H = canvas.height;
-  const MAX = 38;
+  const MAX = 42;
   const particles = [];
-
   const rand = (a, b) => a + Math.random() * (b - a);
 
   function createParticle() {
-    return { x: W/2 + rand(-7,7), y: H-4, vx: rand(-.5,.5), vy: rand(-2.2,-1.2), life: 0, maxLife: rand(28,50), size: rand(5,13) };
+    return {
+      x: W / 2 + rand(-6, 6),
+      y: H - 2,
+      vx: rand(-0.45, 0.45),
+      vy: rand(-2.4, -1.3),
+      life: 0,
+      maxLife: rand(26, 52),
+      size: rand(5, 14)
+    };
   }
 
   for (let i = 0; i < MAX; i++) {
@@ -131,67 +89,76 @@ if (accroche) {
   }
 
   function flameColor(t) {
-    if (t < 0.3)  return `rgb(255,${Math.round(220+(1-t/.3)*35)},${Math.round(120*(1-t/.3))})`;
-    if (t < 0.65) return `rgb(255,${Math.round(180-(t-.3)/.35*80)},0)`;
-    return `rgb(${Math.round(255-(t-.65)/.35*80)},${Math.round(100-(t-.65)/.35*100)},0)`;
+    // cœur blanc-jaune → orange → rouge sombre
+    if (t < 0.18) {
+      const r = 255, g = Math.round(255 - t / 0.18 * 80), b = Math.round(200 * (1 - t / 0.18));
+      return `rgb(${r},${g},${b})`;
+    }
+    if (t < 0.55) {
+      const p = (t - 0.18) / 0.37;
+      return `rgb(255,${Math.round(175 - p * 90)},0)`;
+    }
+    const p = (t - 0.55) / 0.45;
+    return `rgb(${Math.round(255 - p * 100)},${Math.round(85 - p * 85)},0)`;
   }
 
   function drawParticle(p) {
     const t = p.life / p.maxLife;
-    const alpha = t < .15 ? t/.15 : 1-(t-.15)/.85;
-    const size  = p.size * (1 - t*.5);
-    const color = flameColor(t);
-    const rgba  = a => color.replace('rgb','rgba').replace(')',`,${a})`);
-    const grad  = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,size);
-    grad.addColorStop(0, rgba(alpha));
-    grad.addColorStop(.5,rgba(alpha*.6));
-    grad.addColorStop(1, rgba(0));
+    const alpha = t < 0.12 ? t / 0.12 : Math.pow(1 - t, 1.2);
+    const size  = p.size * (1 - t * 0.45);
+    const col   = flameColor(t);
+    const rgba  = a => col.replace('rgb', 'rgba').replace(')', `,${(a).toFixed(2)})`);
+    const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, size);
+    g.addColorStop(0,   rgba(alpha));
+    g.addColorStop(0.45, rgba(alpha * 0.55));
+    g.addColorStop(1,   rgba(0));
     ctx.beginPath();
-    ctx.arc(p.x, p.y, size, 0, Math.PI*2);
-    ctx.fillStyle = grad;
+    ctx.arc(p.x, p.y, size, 0, Math.PI * 2);
+    ctx.fillStyle = g;
     ctx.fill();
   }
 
   let raf = null;
   function animate() {
     ctx.clearRect(0, 0, W, H);
-    const glow = ctx.createRadialGradient(W/2,H,0,W/2,H,W*.8);
-    glow.addColorStop(0,'rgba(201,168,76,0.18)');
-    glow.addColorStop(1,'rgba(201,168,76,0)');
-    ctx.fillStyle = glow; ctx.fillRect(0,0,W,H);
+    // halo de base
+    const glow = ctx.createRadialGradient(W/2, H, 0, W/2, H, W * 0.9);
+    glow.addColorStop(0, 'rgba(201,140,30,0.22)');
+    glow.addColorStop(1, 'rgba(201,140,30,0)');
+    ctx.fillStyle = glow;
+    ctx.fillRect(0, 0, W, H);
+
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
-      p.life++; p.x += p.vx + Math.sin(p.life*.18+i)*.35; p.y += p.vy; p.vy -= .018;
+      p.life++;
+      // mouvement ondulant naturel
+      p.x  += p.vx + Math.sin(p.life * 0.16 + i * 0.9) * 0.38;
+      p.y  += p.vy;
+      p.vy -= 0.016;
       if (p.life >= p.maxLife) { particles[i] = createParticle(); continue; }
       drawParticle(p);
     }
     raf = requestAnimationFrame(animate);
   }
 
+  // démarre seulement quand la section est visible, s'arrête sinon
   new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) { if (!raf) animate(); }
       else { cancelAnimationFrame(raf); raf = null; }
     });
-  }).observe(canvas);
+  }, { threshold: 0 }).observe(canvas);
 })();
-
-
-/* ═══════════════════════════════════════════════════════════
-   6. SMOOTH SCROLL — tous les liens internes
-   ═══════════════════════════════════════════════════════════ */
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', (e) => {
-    const id     = link.getAttribute('href').slice(1);
+    const id = link.getAttribute('href').slice(1);
     const target = document.getElementById(id);
     if (!target) return;
     e.preventDefault();
     const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'));
-    const top  = target.getBoundingClientRect().top + window.scrollY - navH;
-    window.scrollTo({ top, behavior: 'smooth' });
+    window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - navH, behavior: 'smooth' });
   });
 });
-
 
 /* ═══════════════════════════════════════════════════════════
    7. FORMULAIRE — soumission AJAX vers Laravel
@@ -250,3 +217,16 @@ function showFormError(form, message) {
   form.appendChild(el);
   setTimeout(() => el.remove(), 6000);
 }
+
+
+const backToTop = document.getElementById('backToTop');
+if (backToTop) {
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+
+
+// ═══ EFFET VENT DE SABLE ═══
+// ═══ EFFET VENT DE SABLE — CONTINU ═══

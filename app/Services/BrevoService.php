@@ -240,7 +240,7 @@ class BrevoService
                 </div>
 
                 <!-- Bloc 1 — version simple -->
-                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+                <!-- <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
                 style="background-color:#1A1610;border:1px solid #2A2218;border-radius:14px;margin-bottom:12px;">
                 <tr>
                     <td style="padding:22px 26px 22px 22px;">
@@ -259,7 +259,7 @@ class BrevoService
                     </table>
                     </td>
                 </tr>
-                </table>
+                </table> -->
 
                 <!-- Bloc 2 — version profonde -->
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
@@ -269,7 +269,7 @@ class BrevoService
                     <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
                         <tr>
                         <td width="36" valign="top" style="padding-right:16px;">
-                            <div style="width:36px;height:36px;background-color:#0F0C08;border:1px solid #2A2218;border-radius:8px;text-align:center;line-height:36px;font-size:16px;">🔍</div>
+                            <div style="width:36px;height:36px;background-color:#0F0C08;border:1px solid #2A2218;border-radius:8px;text-align:center;line-height:36px;font-size:16px;">🧭</div>
                         </td>
                         <td valign="top">
                             <div style="font-family:Georgia,serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8B6914;margin-bottom:8px;">Outil de clarification</div>
@@ -329,7 +329,7 @@ class BrevoService
                 </tr>
                 </table>
                 <p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#888880;margin:0;letter-spacing:1px;">
-                Gratuit &nbsp;·&nbsp; Sans engagement &nbsp;·&nbsp; En ligne
+                Offert &nbsp;·&nbsp; Sans engagement &nbsp;·&nbsp; En ligne
                 </p>
             </td>
             </tr>
