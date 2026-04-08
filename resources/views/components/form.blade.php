@@ -92,7 +92,7 @@
                     type="submit"
                     class="btn-gold"
                     style="width:100%;justify-content:center;padding:1rem;border:none;cursor:pointer;">
-                    ✦ Réserve ton appel avec le Sentinelle
+                    ✦ Réserve ta session offerte avec la Sentinelle
                 </button>
 
             </form>

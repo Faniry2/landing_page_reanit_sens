@@ -31,7 +31,7 @@
       </p>
 
       <div class="ph-actions ph-anim-3">
-        <a href="#form" class="btn-gold">✦ Réserve ton appel avec le Sentinelle</a>
+        <a href="#form" class="btn-gold">✦ Réserve ta session offerte avec la Sentinelle.</a>
       </div>
 
       <p class="hero-note ph-anim-4">Offert · En quelques minutes · Aucun engagement</p>
@@ -106,7 +106,7 @@
       </p>
 
       <div class="accroche-actions">
-        <a href="#form" class="btn-gold">✦ Réserve ton appel avec le Sentinelle</a>
+        <a href="#form" class="btn-gold">✦ Réserve ta session offerte avec la Sentinelle.</a>
         <a href="#resonance" class="btn-ghost">En savoir plus ›</a>
       </div>
       <p class="accroche-note">Offert · En quelques minutes · Aucun engagement</p>
@@ -229,7 +229,7 @@
         <span class="sec-label" style="color:var(--gold);">✦ Comment ça se passe</span>
         <h2 class="sec-title">3 étapes simples<br>pour <em>commencer</em></h2>
       </div>
-      <a href="#form" class="btn-gold">✦ Réserve ton appel avec le Sentinelle</a>
+      <a href="#form" class="btn-gold">✦ Réserve ta session offerte avec la Sentinelle.</a>
     </div>
     <div class="steps-row">
       <div class="step-box reveal fu d1">
@@ -271,7 +271,7 @@
           <li>Ce qui te freine dans ton avancée</li>
           <li>Ce qui appelle en toi aujourd'hui</li>
         </ul>
-        <a href="#form" class="btn-gold" style="width:100%;justify-content:center;">✦ Réserve ton appel avec le Sentinelle</a>
+        <a href="#form" class="btn-gold" style="width:100%;justify-content:center;">✦ Réserve ta session offerte avec la Sentinelle.</a>
       </div>
     </div>
   </div>
@@ -368,7 +368,7 @@
           <li>Un accompagnement renforcé au démarrage</li>
           <li>Un accès prioritaire aux prochaines ouvertures et immersions</li>
         </ul>
-        <a href="#form" class="btn-gold" style="width:100%;justify-content:center;">✦ Réserve ton appel avec le Sentinelle</a>
+        <a href="#form" class="btn-gold" style="width:100%;justify-content:center;">✦ Réserve ta session offerte avec la Sentinelle.</a>
         <p class="founders-note">Un passage réservé aux premiers. Une entrée à part.</p>
       </div>
     </div>
@@ -383,7 +383,7 @@
       <h2 class="sec-title">N'ignore pas<br><em>cet appel.</em></h2>
       <p class="sec-text">Parfois, une vie ne bascule pas dans le bruit. Elle bascule dans un instant de lucidité. Dans une porte que l'on accepte enfin d'ouvrir. Dans un premier pas.</p>
       <div class="cta-btns">
-        <a href="#form" class="btn-gold">✦ Réserve ton appel avec le Sentinelle</a>
+        <a href="#form" class="btn-gold">✦ Réserve ta session offerte avec la Sentinelle.</a>
         {{-- <a href="#form" class="btn-ghost-light">Je réserve mon Diagnostic Sahara ›</a> --}}
       </div>
       <div class="cta-sign">Parce qu'il arrive un moment où survivre ne suffit plus.</div>
