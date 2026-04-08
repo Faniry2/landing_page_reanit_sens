@@ -27,7 +27,7 @@
       </a>
     </li>
   </ul>
-  <a href="#form" class="nav-btn">✦ Réserve ton appel avec le Sentinelle</a>
+  <a href="#form" class="nav-btn">✦ Réserve ta session offerte avec la Sentinelle.</a>
   <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
     <span class="burger-line"></span>
     <span class="burger-line"></span>
@@ -53,5 +53,5 @@
     <canvas class="sand-canvas" width="260" height="44"></canvas>
   </a>
   <div class="mobile-divider"></div>
-  <a href="#form" class="mobile-cta">✦ Réserve ton appel avec le Sentinelle</a>
+  <a href="#form" class="mobile-cta">✦ Réserve ta session offerte avec la Sentinelle.</a>
 </div>

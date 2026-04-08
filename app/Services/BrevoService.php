@@ -170,7 +170,7 @@ class BrevoService
         $ctaLabel = match ($inscription->type) {
             'diagnostic_sahara' => '✦ &nbsp; Réserver ma session Diagnostic',
             'fondateur'         => '✦ &nbsp; Réserver ma session Fondateur',
-            default             => '✦ &nbsp; Réserver ma Carte de Traversée',
+            default             => '✦ &nbsp; Réserve ta session offerte avec la Sentinelle.',
         };
 
         return <<<HTML
@@ -202,7 +202,7 @@ class BrevoService
                 ✦ &nbsp; R E N A Î T - S E N S &nbsp; ✦
                 </div>
                 <div style="font-family:Georgia,'Times New Roman',serif;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:#C9A84C;margin-bottom:16px;">
-                Réservation confirmée
+               
                 </div>
                 <div style="font-family:Georgia,'Times New Roman',serif;font-size:36px;font-weight:300;color:#FAFAF7;line-height:1.15;margin-bottom:6px;">
                 La Carte de Traversée
