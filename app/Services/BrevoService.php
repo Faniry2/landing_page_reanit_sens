@@ -155,7 +155,7 @@ class BrevoService
     {
         $prenom      = htmlspecialchars($inscription->prenom);
         $url         = rtrim(config('app.url'), '/');
-        $senderEmail = config('brevo.sender_email', 'contact@renait-sens.com');
+        $senderEmail = config('brevo.sender_email', 'contact@renait-sens90.com');
         $calendlyUrl = config('brevo.calendly_url', 'https://calendly.com/renait-sens/carte-traversee');
 
         // Bloc central adapté selon le type
@@ -164,13 +164,13 @@ class BrevoService
         $introMessage = match ($inscription->type) {
             'diagnostic_sahara' => "Nous allons te contacter très prochainement pour fixer ton <strong style='color:#FAFAF7;font-weight:400;'>Diagnostic Sahara</strong>. En attendant, voici ta Carte de Traversée.",
             'fondateur'         => "Tu fais partie des <strong style='color:#E8C97A;font-weight:400;'>50 Nomades Fondateurs</strong>. Une place rare. Une entrée à part. Voici ta Carte de Traversée pour commencer.",
-            default             => "Tu viens de faire un premier pas. Ce n'est pas anodin.",
+            default             => "Tu viens de faire ton premier pas avec Renaît-Sens, bravo à toi ! 🎉",
         };
 
         $ctaLabel = match ($inscription->type) {
             'diagnostic_sahara' => '✦ &nbsp; Réserver ma session Diagnostic',
             'fondateur'         => '✦ &nbsp; Réserver ma session Fondateur',
-            default             => '✦ &nbsp; Réserver ma Carte de Traversée — 15 min',
+            default             => '✦ &nbsp; Réserver ma Carte de Traversée',
         };
 
         return <<<HTML
@@ -202,7 +202,7 @@ class BrevoService
                 ✦ &nbsp; R E N A Î T - S E N S &nbsp; ✦
                 </div>
                 <div style="font-family:Georgia,'Times New Roman',serif;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:#C9A84C;margin-bottom:16px;">
-                Inscription confirmée
+                Réservation confirmée
                 </div>
                 <div style="font-family:Georgia,'Times New Roman',serif;font-size:36px;font-weight:300;color:#FAFAF7;line-height:1.15;margin-bottom:6px;">
                 La Carte de Traversée
@@ -236,7 +236,7 @@ class BrevoService
             <tr>
             <td style="padding:0 48px 0;">
                 <div style="font-family:Georgia,serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#C9A84C;margin-bottom:20px;">
-                Ce qu'est la Carte de Traversée
+                Que signifie la carte de traversée ?
                 </div>
 
                 <!-- Bloc 1 — version simple -->
@@ -313,7 +313,7 @@ class BrevoService
                 La prochaine étape
                 </div>
                 <p style="font-family:Arial,Helvetica,sans-serif;font-size:16px;color:#A09880;line-height:1.8;margin:0 0 6px;">
-                Ta session se fait en <strong style="color:#FAFAF7;font-weight:400;">15 minutes</strong>, avec une Sentinelle.
+                Ta session se fait avec la <strong style="color:#FAFAF7;font-weight:400;">Sentinelle</strong>.
                 </p>
                 <p style="font-family:Arial,Helvetica,sans-serif;font-size:16px;color:#A09880;line-height:1.8;margin:0 0 32px;">
                 Choisis le créneau qui te convient ci-dessous.
@@ -353,11 +353,11 @@ class BrevoService
             <tr>
             <td style="padding:24px 48px;background-color:#0A0A0A;text-align:center;">
                 <p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#888880;margin:0 0 6px;line-height:1.7;letter-spacing:0.3px;">
-                Tu reçois cet email car tu t'es inscrit(e) sur
+                Tu reçois cet email car tu as fait une demande pour réserver un appel avec le Sentinelle.
                 <a href="{$url}" style="color:#C9A84C;text-decoration:none;">{$url}</a>
                 </p>
                 <p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#888880;margin:0;letter-spacing:0.3px;">
-                Questions ? <a href="mailto:{$senderEmail}" style="color:#C9A84C;text-decoration:none;">{$senderEmail}</a>
+                Questions ? <a href="mailto:contact@renait-sens90.com" style="color:#C9A84C;text-decoration:none;">contact@renait-sens90.com</a>
                 </p>
             </td>
             </tr>

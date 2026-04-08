@@ -46,7 +46,7 @@ class InscriptionController extends Controller
                 'email'      => $data['email'],
                 'telephone'  => $data['telephone'] ?? null,
                
-                'consent'    => request()->boolean('consent'),
+                'consent'    => $request->boolean('consent'),
                 
                 
                 'source'     => $request->input('source', 'landing_page'),

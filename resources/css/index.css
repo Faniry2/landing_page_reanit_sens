@@ -637,3 +637,13 @@ footer { background:var(--black); border-top:1px solid rgba(201,168,76,.12); pad
 @keyframes shiny-border {
   to { --gradient-angle: 360deg; }
 }
+
+
+/* ── CTA Résonance ───────────────────────────────────────── */
+.res-cta {
+  display: inline-flex;
+  margin-top: 1.5rem;
+  width: 100%;
+  justify-content: center;
+  box-shadow: 0 4px 24px rgba(201,168,76,.2);
+}

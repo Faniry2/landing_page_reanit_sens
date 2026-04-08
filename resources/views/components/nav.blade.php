@@ -14,6 +14,11 @@
   <ul class="nav-links">
     <li><a href="#accroche">La vision de Renaît-Sens</a></li>
     <li><a href="#resonance">Pour qui</a></li>
+    <li>
+      <a href="#reasons">
+        Pourquoi Renaît-Sens
+      </a>
+    </li>
     <li><a href="#steps">Comment ça se passe</a></li>
     <li><a href="#offer">Ce que tu reçois</a></li>
     <li>
@@ -22,7 +27,7 @@
       </a>
     </li>
   </ul>
-  <a href="#form" class="nav-btn">✦ Je commence</a>
+  <a href="#form" class="nav-btn">✦ Réserve ton appel avec le Sentinelle</a>
   <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
     <span class="burger-line"></span>
     <span class="burger-line"></span>
@@ -36,6 +41,8 @@
   <div class="mobile-divider"></div>
   <a href="#resonance">Résonance</a>
   <div class="mobile-divider"></div>
+  <a href="#reasons">Pourquoi Renaît-Sens</a>
+  <div class="mobile-divider"></div>
   <a href="#steps">Comment ça se passe</a>
   <div class="mobile-divider"></div>
   <a href="#offer">Ce que tu reçois</a>
@@ -46,5 +53,5 @@
     <canvas class="sand-canvas" width="260" height="44"></canvas>
   </a>
   <div class="mobile-divider"></div>
-  <a href="#form" class="mobile-cta">✦ Je commence</a>
+  <a href="#form" class="mobile-cta">✦ Réserve ton appel avec le Sentinelle</a>
 </div>
