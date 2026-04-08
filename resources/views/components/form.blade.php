@@ -92,7 +92,7 @@
                     type="submit"
                     class="btn-gold"
                     style="width:100%;justify-content:center;padding:1rem;border:none;cursor:pointer;">
-                    ✦ Recevoir ma Carte de Traversée Personnelle
+                    ✦ Réserve ton appel avec le Sentinelle
                 </button>
 
             </form>
