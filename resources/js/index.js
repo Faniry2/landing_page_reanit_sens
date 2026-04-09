@@ -230,3 +230,92 @@ if (backToTop) {
 
 // ═══ EFFET VENT DE SABLE ═══
 // ═══ EFFET VENT DE SABLE — CONTINU ═══
+/* ═══ NAV CARROUSEL — déplace le CTA dans les liens sur tablette ═══ */
+/* ═══ NAV CARROUSEL avec flèches — actif de 769px à 1476px ═══ */
+(function () {
+  const MQ = window.matchMedia('(max-width: 1476px) and (min-width: 769px)');
+
+  const nav      = document.querySelector('nav');
+  const navBtn   = nav?.querySelector('.nav-btn');
+  const navLinks = nav?.querySelector('.nav-links');
+
+  if (!nav || !navLinks) return;
+
+  /* ── Wrapper ── */
+  const wrapper = document.createElement('div');
+  wrapper.classList.add('nav-carousel-wrapper');
+
+  /* ── Flèche GAUCHE ── */
+  const arrowLeft = document.createElement('button');
+  arrowLeft.classList.add('nav-arrow', 'nav-arrow-left');
+  arrowLeft.setAttribute('aria-label', 'Défiler à gauche');
+  arrowLeft.innerHTML = `<svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>`;
+
+  /* ── Flèche DROITE ── */
+  const arrowRight = document.createElement('button');
+  arrowRight.classList.add('nav-arrow', 'nav-arrow-right');
+  arrowRight.setAttribute('aria-label', 'Défiler à droite');
+  arrowRight.innerHTML = `<svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>`;
+
+  /* ── Clone CTA dans le carrousel ── */
+  let btnLi = null;
+  // if (navBtn) {
+  //   btnLi = document.createElement('li');
+  //   btnLi.classList.add('nav-btn-li');
+  //   btnLi.appendChild(navBtn.cloneNode(true));
+  // }
+
+  const STEP = 240;
+
+  function updateArrows() {
+    const { scrollLeft, scrollWidth, clientWidth } = navLinks;
+    arrowLeft.classList.toggle('disabled', scrollLeft <= 2);
+    arrowRight.classList.toggle('disabled', scrollLeft + clientWidth >= scrollWidth - 2);
+  }
+
+  function onWheel(e) {
+    navLinks.scrollLeft += e.deltaY * 0.9;
+    e.preventDefault();
+  }
+
+  function build() {
+    if (nav.contains(wrapper)) return; // déjà construit
+
+    nav.appendChild(wrapper);
+    wrapper.appendChild(arrowLeft);
+    wrapper.appendChild(navLinks);
+    wrapper.appendChild(arrowRight);
+
+    if (btnLi && !navLinks.contains(btnLi)) {
+      navLinks.appendChild(btnLi);
+    }
+
+    if (navBtn) navBtn.style.display = 'none';
+
+    arrowLeft.addEventListener('click', () => navLinks.scrollBy({ left: -STEP, behavior: 'smooth' }));
+    arrowRight.addEventListener('click', () => navLinks.scrollBy({ left:  STEP, behavior: 'smooth' }));
+    navLinks.addEventListener('scroll', updateArrows, { passive: true });
+    navLinks.addEventListener('wheel', onWheel, { passive: false });
+
+    updateArrows();
+  }
+
+  function destroy() {
+    if (!nav.contains(wrapper)) return;
+
+    if (wrapper.contains(navLinks)) nav.insertBefore(navLinks, wrapper);
+    if (btnLi && navLinks.contains(btnLi)) btnLi.remove();
+    wrapper.remove();
+    if (navBtn) navBtn.style.display = '';
+
+    navLinks.removeEventListener('scroll', updateArrows);
+    navLinks.removeEventListener('wheel', onWheel);
+  }
+
+  function apply() {
+    MQ.matches ? build() : destroy();
+  }
+
+  apply();
+  MQ.addEventListener('change', apply);
+})();

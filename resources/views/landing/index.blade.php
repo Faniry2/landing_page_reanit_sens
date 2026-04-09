@@ -9,7 +9,9 @@
 @endsection
  <!-- ═══ NAV ═══ -->
     {{-- ═══ NAV — coller dans index.blade.php ═══ --}}
+      <div class="nav-inner">
         <x-nav/>
+      </div>
 
     <!-- ═══ SECTION 1 — PROGRAMME HERO ═══ -->
 <section class="programme-hero" id="programme">
@@ -31,6 +33,9 @@
       </p>
 
       <div class="ph-actions ph-anim-3">
+        <a href="#founders" class="cta-sahara">
+            Je deviens Nomade Fondateur
+          </a>
         <a href="#form" class="btn-gold">✦ Réserve ta session offerte avec la Sentinelle.</a>
       </div>
 

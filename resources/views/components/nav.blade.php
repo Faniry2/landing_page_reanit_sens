@@ -21,13 +21,13 @@
     </li>
     <li><a href="#steps">Comment ça se passe</a></li>
     <li><a href="#offer">Ce que tu reçois</a></li>
-    <li>
-      <a href="#founders" class="nav-sahara">
+    <li class="nav-sahara">
+      <a href="#founders" >
         Je deviens Nomade Fondateur
       </a>
     </li>
   </ul>
-  <a href="#form" class="nav-btn">✦ Réserve ta session offerte avec la Sentinelle.</a>
+  <a href="#form" class="nav-btn">✦ Session offerte avec la Sentinelle.</a>
   <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
     <span class="burger-line"></span>
     <span class="burger-line"></span>
@@ -53,5 +53,5 @@
     <canvas class="sand-canvas" width="260" height="44"></canvas>
   </a>
   <div class="mobile-divider"></div>
-  <a href="#form" class="mobile-cta">✦ Réserve ta session offerte avec la Sentinelle.</a>
+  <a href="#form" class="mobile-cta">✦ Session offerte avec la Sentinelle.</a>
 </div>
