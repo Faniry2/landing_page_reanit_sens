@@ -119,38 +119,48 @@
       <div class="accroche-stats">
         <div class="accroche-stat">
           <div class="accroche-stat-num">50</div>
-          <div class="accroche-stat-label">Places fondateurs</div>
+          <div class="accroche-stat-label">places nomades fondateurs limitées</div>
         </div>
         <div class="accroche-stat">
           <div class="accroche-stat-num">100%</div>
           <div class="accroche-stat-label">Humain & vrai</div>
         </div>
-        <div class="accroche-stat">
-          <div class="accroche-stat-num">0€</div>
-          <div class="accroche-stat-label">Premier pas</div>
-        </div>
+        {{-- <div class="accroche-stat">
+          <div class="accroche-stat-num">Aucun </div>
+          <div class="accroche-stat-label">engagement pour le premier pas</div>
+        </div> --}}
       </div>
     </div>
 
     <!-- Droite — carte vidéo flottante -->
-    <div class="accroche-right">
+   <div class="accroche-right">
       <div class="video-card">
 
-        <!-- 🎬 Remplace "ton-video.mp4" par l'URL réelle de ta vidéo -->
-        <!-- <video autoplay muted loop playsinline src="ton-video.mp4"></video> -->
+          {{-- Video.js --}}
+        
+          <video
+            id="presentation-video"
+            class="video-js vjs-theme-city vjs-big-play-centered"
+            controls
+            preload="auto"
+            autoplay
+            muted
+            loop
+            playsinline
+            poster="{{ asset('images/logo-renait-sens-removebg-preview.png') }}"
+            data-setup='{}'
+          >
+            {{-- Remplace par l'URL réelle de ta vidéo --}}
+            <source src="{{ asset('videos/0327.mp4') }}" type="video/mp4">
+           
+            <p class="vjs-no-js">
+              Pour voir cette vidéo, veuillez activer JavaScript ou utiliser un navigateur
+              qui <a href="https://videojs.com/html5-video-support/" target="_blank">supporte HTML5</a>.
+            </p>
+          </video>
 
-        <!-- Placeholder en attendant la vidéo -->
-        <div class="video-placeholder">
-          <div class="play-ring" onclick="this.closest('.video-placeholder').innerHTML='<p style=\'color:var(--muted);font-size:.9rem;padding:2rem;text-align:center;\'>Insère ici l\'URL de ta vidéo dans la balise &lt;video&gt;</p>'">
-            <svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
-          </div>
-          <div class="video-placeholder-label">Vidéo de présentation</div>
         </div>
-
-      </div>
     </div>
-
-  </div>
 </section>
 
 <!-- ═══ RESONANCE ═══ -->
@@ -346,10 +356,10 @@
         <div class="founders-counter">
           <div class="counter-box">
             <div class="counter-num">50</div>
-            <div class="counter-lbl">Places totales</div>
+            <div class="counter-lbl">places nomades fondateurs limitées</div>
           </div>
           <div class="counter-box">
-            <div class="counter-num">1</div>
+            <div class="counter-num">Un</div>
             <div class="counter-lbl">Seul premier pas</div>
           </div>
           <div class="counter-box">
@@ -357,8 +367,8 @@
             <div class="counter-lbl">Accès prioritaires</div>
           </div>
           <div class="counter-box">
-            <div class="counter-num">0€</div>
-            <div class="counter-lbl">Pour commencer</div>
+           <div class="counter-num">Un</div>
+            <div class="counter-lbl">diagnostic Sahara prioritaire</div>
           </div>
         </div>
       </div>

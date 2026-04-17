@@ -800,7 +800,7 @@ footer { background:var(--black); border-top:1px solid rgba(201,168,76,.12); pad
   <div class="container">
     <div class="offer-header reveal fu">
       <span class="sec-label" style="text-align:center;display:block;">✦ Ce que tu reçois aujourd'hui</span>
-      <h2 class="sec-title" style="color:var(--white);">Choisis ta première<br><em>porte d'entrée</em></h2>
+      <h2 class="sec-title" style="var(--dark2);">Choisis ta première<br><em>porte d'entrée</em></h2>
       <p class="sec-text">Un seul but : te donner un premier espace de clarté.</p>
     </div>
     <div class="offer-grid">
@@ -883,10 +883,10 @@ footer { background:var(--black); border-top:1px solid rgba(201,168,76,.12); pad
         <div class="founders-counter">
           <div class="counter-box">
             <div class="counter-num">50</div>
-            <div class="counter-lbl">Places totales</div>
+            <div class="counter-lbl">places nomades limitées</div>
           </div>
           <div class="counter-box">
-            <div class="counter-num">1</div>
+            <div class="counter-num">Un</div>
             <div class="counter-lbl">Seul premier pas</div>
           </div>
           <div class="counter-box">
@@ -894,8 +894,8 @@ footer { background:var(--black); border-top:1px solid rgba(201,168,76,.12); pad
             <div class="counter-lbl">Accès prioritaires</div>
           </div>
           <div class="counter-box">
-            <div class="counter-num">0€</div>
-            <div class="counter-lbl">Pour commencer</div>
+            <div class="counter-num">Un</div>
+            <div class="counter-lbl">diagnostic Sahara prioritaire</div>
           </div>
         </div>
       </div>
