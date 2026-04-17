@@ -3,7 +3,7 @@
 
         <div class="reveal fu">
             <span class="sec-label" style="text-align:center;display:block;">✦ Premier pas</span>
-            <h2 class="sec-title" style="color:var(--white);font-size:1.9rem;">
+            <h2 class="sec-title" style="color:var(--dark2);font-size:1.9rem;">
                 Reçois ta Carte de <em>Traversée Personnelle</em>
             </h2>
         </div>

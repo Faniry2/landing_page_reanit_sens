@@ -26,3 +26,14 @@ Thumbs.db
 .env.*
 *.env
 .env copy
+# Videos
+*.mp4
+*.webm
+*.avi
+*.mov
+*.mkv
+*.flv
+*.wmv
+*.m4v
+*.ogv
+public/videos/

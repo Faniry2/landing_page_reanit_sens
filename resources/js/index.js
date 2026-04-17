@@ -319,3 +319,15 @@ if (backToTop) {
   apply();
   MQ.addEventListener('change', apply);
 })();
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+        const player = videojs('presentation-video', {
+          fluid: true,          // s'adapte à la largeur du conteneur
+          responsive: true,
+          aspectRatio: '9:16',  // à ajuster selon ta vidéo
+          autoplay: 'muted',    // autoplay fiable sur tous les navigateurs
+          loop: true,
+          controls: true,
+        });});
