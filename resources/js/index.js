@@ -323,11 +323,16 @@ if (backToTop) {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-        const player = videojs('presentation-video', {
-          fluid: true,          // s'adapte à la largeur du conteneur
-          responsive: true,
-          aspectRatio: '9:16',  // à ajuster selon ta vidéo
-          autoplay: 'muted',    // autoplay fiable sur tous les navigateurs
-          loop: true,
-          controls: true,
-        });});
+        const player = videojs.getPlayer('presentation-video');
+        if (!player) return;
+
+        const unlockSound = () => {
+          player.muted(false);
+          ['click', 'touchend', 'pointerdown'].forEach(evt =>
+            document.removeEventListener(evt, unlockSound)
+          );
+        };
+        ['click', 'touchend', 'pointerdown'].forEach(evt =>
+          document.addEventListener(evt, unlockSound, { once: true, passive: true })
+        );
+});
