@@ -151,7 +151,7 @@
             data-setup='{}'
           >
             {{-- Remplace par l'URL réelle de ta vidéo --}}
-            <source src="{{ asset('videos/0327.mp4') }}" type="video/mp4">
+            <source src="{{ asset('videos/vsl.mp4') }}" type="video/mp4">
            
             <p class="vjs-no-js">
               Pour voir cette vidéo, veuillez activer JavaScript ou utiliser un navigateur
