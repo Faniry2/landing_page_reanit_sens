@@ -141,14 +141,10 @@
           <video
             id="presentation-video"
             class="video-js vjs-theme-city vjs-big-play-centered"
-            controls
             preload="auto"
-            autoplay
-            muted
-            loop
             playsinline
             poster="{{ asset('images/logo-renait-sens-removebg-preview.png') }}"
-            data-setup='{}'
+            data-setup='{"autoplay":"muted","loop":true,"controls":true,"fluid":true,"responsive":true}'
           >
             {{-- Remplace par l'URL réelle de ta vidéo --}}
             <source src="{{ asset('videos/0327.mp4') }}" type="video/mp4">
@@ -172,15 +168,15 @@
       <p class="sec-text">Tu continues d'avancer, mais intérieurement quelque chose s'est fatigué. Tu n'as peut-être pas besoin d'un conseil de plus.</p>
       <p class="sec-text" style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:var(--gold);margin-top:1.2rem;">Tu as peut-être besoin d'un passage.</p>
       <div class="res-tags">
-        <span class="res-tag">une séparation</span>
-        <span class="res-tag">perte de repères</span>
+        <span class="res-tag">Pour toutes personnes en surcharge mentale, perte de sens ou tournant de vie, qui veulent reprendre le contrôle.</span>
+        {{-- <span class="res-tag">perte de repères</span>
         <span class="res-tag">vide intérieur</span>
         <span class="res-tag">fatigue profonde</span>
         <span class="res-tag">transition de vie</span>
         <span class="res-tag">trop-plein émotionnel</span>
         <span class="res-tag">ne plus continuer comme avant</span>
         <span class="res-tag">se relever après le choc</span>
-        <span class="res-tag">se reconstruire à travers le deuil</span>
+        <span class="res-tag">se reconstruire à travers le deuil</span> --}}
       </div>
     </div>
 
