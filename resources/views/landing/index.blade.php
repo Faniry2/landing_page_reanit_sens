@@ -143,12 +143,10 @@
             class="video-js vjs-theme-city vjs-big-play-centered"
             preload="auto"
             playsinline
-            poster="{{ asset('images/logo-renait-sens-removebg-preview.png') }}"
-            data-setup='{"autoplay":"muted","loop":true,"controls":true,"fluid":true,"responsive":true}'
+            poster="{{ asset('images/give_hands.png') }}"
+            data-setup='{"loop":true,"controls":true,"fluid":true,"responsive":true}'
           >
-            {{-- Remplace par l'URL réelle de ta vidéo --}}
             <source src="{{ asset('videos/vsl.mp4') }}" type="video/mp4">
-           
             <p class="vjs-no-js">
               Pour voir cette vidéo, veuillez activer JavaScript ou utiliser un navigateur
               qui <a href="https://videojs.com/html5-video-support/" target="_blank">supporte HTML5</a>.

@@ -323,16 +323,9 @@ if (backToTop) {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-        const player = videojs.getPlayer('presentation-video');
-        if (!player) return;
+  const player = videojs.getPlayer('presentation-video');
+  if (!player) return;
 
-        const unlockSound = () => {
-          player.muted(false);
-          ['click', 'touchend', 'pointerdown'].forEach(evt =>
-            document.removeEventListener(evt, unlockSound)
-          );
-        };
-        ['click', 'touchend', 'pointerdown'].forEach(evt =>
-          document.addEventListener(evt, unlockSound, { once: true, passive: true })
-        );
+  // S'assurer que le son est activé dès le départ
+  player.muted(false);
 });
