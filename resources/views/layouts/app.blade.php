@@ -43,6 +43,7 @@
         
         @stack('scripts')
 
+        @verbatim
         <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -64,6 +65,7 @@
         }
         </script>
 
+        @verbatim
         <script type="application/ld+json">
             {
             "@context": "https://schema.org",
