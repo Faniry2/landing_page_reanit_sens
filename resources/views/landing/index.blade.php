@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 
-@push('styles')
-    @vite('resources/css/index.css')
-@endpush
+
 
 @section('content')
 @endsection
