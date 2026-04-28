@@ -4,7 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <meta name="description" content="@yield('meta_description', __('messages.meta_description_page_accueil'))">
+        <meta name="description" content="Renaît-Sens90 — Programme d'accompagnement de 90 jours pour libérer tes blocages émotionnels, retrouver du sens et redevenir toi-même. Réserve ta session offerte avec une Sentinelle.">
+        <meta property="og:title" content="Renaît-Sens90 — Retrouve qui tu es vraiment">
+        <meta property="og:description" content="En 90 jours, libère tes blocages émotionnels et redeviens la personne que tu es vraiment. Programme humain, profond et accompagné.">
+        <meta property="og:image" content="{{ asset('images/give_hands.png') }}">
+        <meta property="og:type" content="website">
         
         <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -38,5 +42,51 @@
 
         
         @stack('scripts')
+
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": "Renaît-Sens90",
+            "description": "Programme d'accompagnement de 90 jours pour libérer tes blocages émotionnels et retrouver du sens.",
+            "provider": {
+                "@type": "Organization",
+                "name": "Renaît-Sens"
+            },
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "EUR",
+                "description": "Session découverte offerte"
+            },
+            "timeRequired": "P90D",
+            "inLanguage": "fr"
+        }
+        </script>
+
+        <script type="application/ld+json">
+            {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                "@type": "Question",
+                "name": "Qu'est-ce que Renaît-Sens90 ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Un programme d'accompagnement de 90 jours pour libérer tes blocages émotionnels et retrouver du sens."
+                }
+                },
+                {
+                "@type": "Question",
+                "name": "La session découverte est-elle vraiment gratuite ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Oui, la session offerte avec une Sentinelle est entièrement gratuite, sans engagement."
+                }
+                }
+            ]
+            }
+        </script>
     </body>
 </html>

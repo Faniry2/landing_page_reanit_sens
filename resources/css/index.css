@@ -828,3 +828,29 @@ footer { background:var(--black); border-top:1px solid rgba(201,168,76,.12); pad
     min-height: 200px;
   }
 }
+
+.who-or {
+  color: var(--gold-light) !important;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 0.3rem 0.8rem;
+  margin: 0.5rem 0;
+
+  /* Fond sombre */
+  background: linear-gradient(#0c0c0ceb, #0c0c0ceb) padding-box,
+              conic-gradient(
+                from var(--gradient-angle),
+                #8B6914 0%,
+                #C9A84C 15%,
+                #F7EDD5 30%,
+                #C9A84C 45%,
+                #8B6914 60%,
+                rgba(201, 168, 76, .1) 100%
+              ) border-box;
+
+  /* ✅ Indispensable pour voir le border dégradé */
+  border: 1.5px solid transparent;
+
+  /* Ombre douce dorée au lieu du noir */
+  box-shadow: 0 4px 16px rgba(201, 168, 76, 0.15);
+}

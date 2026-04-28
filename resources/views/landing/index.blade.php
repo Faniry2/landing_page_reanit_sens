@@ -26,7 +26,9 @@
           <span class="prog-name">Renaît-Sens90</span>
         </span>
       </h1>
-
+      <p class="who-or">
+        Pour toutes personnes en surcharge mentale, perte de sens ou tournant de vie, qui veulent reprendre le contrôle.
+      </p>
       <p class="ph-sub ph-anim-2">
         En <strong>90 jours</strong>, libère tes blocages émotionnels<br>
         et deviens la personne que tu es vraiment.
@@ -165,7 +167,8 @@
       <h2 class="sec-title">Peut-être que tu<br>te <em>reconnais</em> ici…</h2>
       <p class="sec-text">Tu continues d'avancer, mais intérieurement quelque chose s'est fatigué. Tu n'as peut-être pas besoin d'un conseil de plus.</p>
       <p class="sec-text" style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:var(--gold);margin-top:1.2rem;">Tu as peut-être besoin d'un passage.</p>
-      <div class="res-tags">
+      <p class="sec-text who-or">Pour toutes personnes en surcharge mentale, perte de sens ou tournant de vie, qui veulent reprendre le contrôle.</p>
+      {{-- <div class="res-tags">
         <span class="res-tag">Pour toutes personnes en surcharge mentale, perte de sens ou tournant de vie, qui veulent reprendre le contrôle.</span>
         {{-- <span class="res-tag">perte de repères</span>
         <span class="res-tag">vide intérieur</span>
@@ -174,8 +177,8 @@
         <span class="res-tag">trop-plein émotionnel</span>
         <span class="res-tag">ne plus continuer comme avant</span>
         <span class="res-tag">se relever après le choc</span>
-        <span class="res-tag">se reconstruire à travers le deuil</span> --}}
-      </div>
+        <span class="res-tag">se reconstruire à travers le deuil</span>
+      </div> --}}
     </div>
 
     <div class="res-right reveal fr d3">
