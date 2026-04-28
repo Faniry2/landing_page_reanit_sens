@@ -65,30 +65,30 @@
         }
         </script>
 
-        @verbatim
         <script type="application/ld+json">
-            {
+        {
             "@context": "https://schema.org",
             "@type": "FAQPage",
             "mainEntity": [
                 {
-                "@type": "Question",
-                "name": "Qu'est-ce que Renaît-Sens90 ?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Un programme d'accompagnement de 90 jours pour libérer tes blocages émotionnels et retrouver du sens."
-                }
+                    "@type": "Question",
+                    "name": "Qu'est-ce que Renaît-Sens90 ?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Un programme d'accompagnement de 90 jours pour libérer tes blocages émotionnels."
+                    }
                 },
                 {
-                "@type": "Question",
-                "name": "La session découverte est-elle vraiment gratuite ?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Oui, la session offerte avec une Sentinelle est entièrement gratuite, sans engagement."
-                }
+                    "@type": "Question",
+                    "name": "La session découverte est-elle vraiment gratuite ?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Oui, entièrement gratuite, sans engagement."
+                    }
                 }
             ]
-            }
+        }
         </script>
+        @endverbatim
     </body>
 </html>
