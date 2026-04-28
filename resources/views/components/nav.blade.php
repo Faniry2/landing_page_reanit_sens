@@ -39,7 +39,7 @@
 <div id="mobileMenu" class="mobile-menu" role="dialog" aria-label="Menu principal" aria-modal="true">
   <a href="#accroche">La vision de Renaît-Sens</a>
   <div class="mobile-divider"></div>
-  <a href="#resonance">Résonance</a>
+  <a href="#resonance">Pour qui</a>
   <div class="mobile-divider"></div>
   <a href="#reasons">Pourquoi Renaît-Sens</a>
   <div class="mobile-divider"></div>
