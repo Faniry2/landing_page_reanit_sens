@@ -1,4 +1,6 @@
 
+import './phone-iti.js';
+
 // ═══ BURGER MENU ═══
 const burger = document.getElementById('burger');
 const mobileMenu = document.getElementById('mobileMenu');

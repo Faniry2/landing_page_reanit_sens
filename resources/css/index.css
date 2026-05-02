@@ -799,3 +799,17 @@ footer {
   .accroche-stats { flex-direction:column; gap:1rem; }
   .accroche-title { font-size:clamp(2.2rem,9vw,3rem) !important; }
 }
+
+.form-input-icon-wrap {
+  position: relative;
+}
+.form-input-icon {
+  position: absolute;
+  left: 1rem; top: 50%;
+  transform: translateY(-50%);
+  display: flex; align-items: center;
+}
+.form-input-with-icon {
+  padding-left: 2.8rem !important;
+}
+

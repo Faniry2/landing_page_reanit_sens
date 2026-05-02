@@ -1,0 +1,135 @@
+/* ═══════════════════════════════════════════════════════
+   PHONE INPUT INTERNATIONALISÉ — à ajouter dans index.css
+   ═══════════════════════════════════════════════════════ */
+
+.phone-input-wrap {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  position: relative;
+}
+
+/* ── Sélecteur indicatif ─────────────────────────────── */
+.phone-flag-select {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  padding: 0 .85rem;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-right: none;
+  border-radius: 10px 0 0 10px;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  white-space: nowrap;
+  transition: background .2s, border-color .2s;
+  outline: none;
+  min-width: 90px;
+}
+.phone-flag-select:hover,
+.phone-flag-select:focus {
+  background: rgba(201,168,76,.08);
+  border-color: rgba(201,168,76,.35);
+}
+.phone-flag-select.open {
+  border-color: var(--gold);
+  background: rgba(201,168,76,.1);
+}
+
+.phone-flag  { font-size: 1.2rem; line-height: 1; }
+.phone-code  { font-size: .88rem; color: var(--gold-light); font-family: 'Outfit', sans-serif; letter-spacing: .02em; }
+.phone-arrow { color: var(--muted); transition: transform .25s; flex-shrink: 0; }
+.phone-flag-select.open .phone-arrow { transform: rotate(180deg); }
+
+/* ── Input numéro ────────────────────────────────────── */
+.phone-number-input {
+  border-radius: 0 10px 10px 0 !important;
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Dropdown ────────────────────────────────────────── */
+.phone-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 280px;
+  background: #1A1A1A;
+  border: 1px solid rgba(201,168,76,.25);
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.6);
+  z-index: 9999;
+  overflow: hidden;
+  animation: dropIn .2s ease;
+}
+@keyframes dropIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.phone-flag-select.open .phone-dropdown { display: block; }
+
+/* Recherche */
+.phone-search-wrap {
+  padding: .7rem .8rem .5rem;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.phone-search {
+  width: 100%;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 8px;
+  padding: .5rem .8rem;
+  color: var(--white);
+  font-family: 'Outfit', sans-serif;
+  font-size: .85rem;
+  outline: none;
+  transition: border-color .2s;
+}
+.phone-search:focus { border-color: var(--gold); }
+.phone-search::placeholder { color: rgba(255,255,255,.3); }
+
+/* Liste */
+.phone-list {
+  list-style: none;
+  max-height: 240px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201,168,76,.3) transparent;
+  padding: .4rem 0;
+}
+.phone-list::-webkit-scrollbar { width: 4px; }
+.phone-list::-webkit-scrollbar-track { background: transparent; }
+.phone-list::-webkit-scrollbar-thumb { background: rgba(201,168,76,.3); border-radius: 2px; }
+
+.phone-list-label {
+  font-size: .68rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: .5rem 1rem .3rem;
+  pointer-events: none;
+}
+
+.phone-option {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .55rem 1rem;
+  cursor: pointer;
+  transition: background .15s;
+}
+.phone-option:hover { background: rgba(201,168,76,.08); }
+.phone-option.active { background: rgba(201,168,76,.12); }
+.phone-option.hidden { display: none; }
+
+.phone-option-flag { font-size: 1.1rem; flex-shrink: 0; }
+.phone-option-name { font-size: .85rem; color: var(--white); flex: 1; }
+.phone-option-code { font-size: .8rem; color: var(--gold-light); flex-shrink: 0; }
+
+/* ── Responsive mobile ───────────────────────────────── */
+@media (max-width: 480px) {
+  .phone-dropdown { width: calc(100vw - 3rem); left: 0; }
+  .phone-code { font-size: .78rem; }
+}
