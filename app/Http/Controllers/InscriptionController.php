@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\InscriptionRequest;
 use App\Models\Inscription;
 use App\Services\BrevoService;
+use App\Services\EspoCrmService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -13,7 +14,10 @@ use Illuminate\Support\Facades\RateLimiter;
 
 class InscriptionController extends Controller
 {
-    public function __construct(private BrevoService $brevo) {}
+    public function __construct(
+        private BrevoService   $brevo,
+        private EspoCrmService $espocrm,
+    ) {}
 
     // ── POST /inscription ─────────────────────────────────────
     public function store(InscriptionRequest $request): JsonResponse|RedirectResponse
@@ -34,41 +38,80 @@ class InscriptionController extends Controller
         $existant = Inscription::where('email', $data['email'])->first();
         if ($existant) {
             return $this->respond($request, false, [
-                'message' => 'Cette adresse email est déjà inscrite. Vérifie ta boîte mail !',
+                'message'            => 'Cette adresse email est déjà inscrite. Vérifie ta boîte mail !',
                 'already_registered' => true,
             ], 422);
         }
 
-        // ── Crée l'inscription ──
+        // ── 1. Enregistrement BDD — seul point bloquant ──────────
+        // Si la BDD plante → on retourne une erreur au Nomade
         try {
             $inscription = Inscription::create([
+                'nom'       => $data['nom'],
                 'prenom'     => $data['prenom'],
                 'email'      => $data['email'],
-                'telephone'  => $data['telephone'] ?? null,
-               
+                'telephone'  => $data['telephone'],
+                'whatsapp'   => $data['whatsapp'] ?? null,
                 'consent'    => $request->boolean('consent'),
-                
-                
                 'source'     => $request->input('source', 'landing_page'),
             ]);
         } catch (\Exception $e) {
-            Log::error('Inscription DB error', ['error' => $e->getMessage()]);
-            
+            Log::error('Inscription DB error', [
+                'error' => $e->getMessage(),
+                'email' => $data['email'],
+            ]);
             return $this->respond($request, false, [
                 'message' => 'Une erreur est survenue. Merci de réessayer.',
             ], 500);
         }
 
-        // ── Brevo : email de confirmation + ajout contact + notif admin ──
-        $emailOk = $this->brevo->envoyerConfirmation($inscription);
-        $this->brevo->ajouterContact($inscription);
-        $this->brevo->notifierAdmin($inscription);
+        // ── 2. Brevo confirmation — non bloquant ─────────────────
+        // Si Brevo plante → inscription déjà sauvée, on log et on continue
+        if (is_null($inscription->email_envoye_at)) {
 
-        if ($emailOk) {
-            $inscription->update(['email_envoye_at' => now()]);
+            try {
+                $emailOk = $this->brevo->envoyerConfirmation($inscription);
+                if ($emailOk) {
+                    $inscription->update(['email_envoye_at' => now()]);
+                }
+            } catch (\Exception $e) {
+                Log::warning('Brevo confirmation échouée — non bloquant', [
+                    'inscription_id' => $inscription->id,
+                    'error'          => $e->getMessage(),
+                ]);
+            }
+
+            try {
+                $this->brevo->ajouterContact($inscription);
+            } catch (\Exception $e) {
+                Log::warning('Brevo ajout contact échoué — non bloquant', [
+                    'inscription_id' => $inscription->id,
+                    'error'          => $e->getMessage(),
+                ]);
+            }
+
+            try {
+                $this->brevo->notifierAdmin($inscription);
+            } catch (\Exception $e) {
+                Log::warning('Brevo notif admin échouée — non bloquant', [
+                    'inscription_id' => $inscription->id,
+                    'error'          => $e->getMessage(),
+                ]);
+            }
         }
 
-        Log::info('Nouvelle inscription', [
+        // ── 3. EspoCRM — non bloquant ────────────────────────────
+        // Si EspoCRM plante → inscription et emails déjà traités, on log et on continue
+        try {
+            $this->espocrm->creerContact($inscription);
+        } catch (\Exception $e) {
+            Log::warning('EspoCRM création contact échouée — non bloquant', [
+                'inscription_id' => $inscription->id,
+                'error'          => $e->getMessage(),
+            ]);
+        }
+
+        Log::info('Nouvelle inscription complète', [
             'id'    => $inscription->id,
             'type'  => $inscription->type,
             'email' => $inscription->email,
@@ -81,7 +124,7 @@ class InscriptionController extends Controller
         ], 201);
     }
 
-    // ── Répond en JSON ou redirect selon le type de requête ──
+    // ── Répond en JSON ou redirect ────────────────────────────
     private function respond(
         Request $request,
         bool $success,
@@ -105,7 +148,7 @@ class InscriptionController extends Controller
             ->with('error', $data['message'] ?? 'Une erreur est survenue.');
     }
 
-    // ── GET /merci ─────────────────────────────────────────────
+    // ── GET /merci ────────────────────────────────────────────
     public function merci(): \Illuminate\View\View
     {
         return view('inscription.merci', [
